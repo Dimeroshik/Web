@@ -7,32 +7,25 @@ body, html {
 }
 
 .class1 {
-	background-color: blue;
+	background-color: red;
 }
 
 .container {
 	width: 80%;
 }
 
-.navigation,
-.reg {
+.navigation {
 	padding-top: 20px;
 }
 
-.navigation a,
-.reg a{
+.navigation a{
 	margin-right: 30px;
 	text-decoration: none;
 	color: black;
 }
 
-.navigation a:hover{
-	text-decoration: underline;
-}
-
-.reg a:hover{
-	text-decoration: underline;
-	color: orange;
+.reg button{
+	padding-top: 5px;
 }
 
 .footer{
@@ -68,9 +61,7 @@ img .event {
 	margin: 10px;
 }
 
-.form-signs input,
-.form-signs h3,
-.form-signs button{
-	width: 40%;
-	margin: 2px auto;
+div {
+	boreder: 1px solid black;
 }
+

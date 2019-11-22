@@ -29,7 +29,7 @@
 
         <!--Main-->
         <?php 
-        require("connect.php"); 
+        require("include/connect.php"); 
 
         if (isset($_POST['username']) and isset($_POST['password'])) {
           $username = $_POST['username'];

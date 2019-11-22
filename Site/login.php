@@ -40,7 +40,7 @@
 
           <?php
             session_start();
-            require("connect.php"); 
+            require("include/connect.php"); 
 
             if (isset($_POST['username']) && isset($_POST['password'])) {
               $username = $_POST['username'];
@@ -76,7 +76,7 @@
               
               echo "Hello ".$username.".";
               echo "Вы вошли.";
-              echo "<a href='logout.php' class='btn btn-lg btn-primary btn-block'>Выйти</a>";  
+              echo "<a href='include/logout.php' class='btn btn-lg btn-primary btn-block'>Выйти</a>";  
 
             }
             else echo $fsmsg;

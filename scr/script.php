@@ -1,38 +1,27 @@
-<!-- 
-1.Выделить список файлов являющихся полноценными страницами
-2.Написать функцию работы с файлом
-2.1 Создание файла и  запись основы sitemap
-2.2 Запись каждого отедельного блока с ссылкой на определенную страницу -->
-
 <?php
-
-function link_search($files, $files_include)
+function print_links($way, $links, $fp, $a) //функция записи в файл 
 {
-	for ($i = 0;  $i < count($files); $i++) {
-		foreach ($files_include as $link) {
-			if ($files[$i] === $link) {
-				$files[$i] = NULL;
-				break;
-			}
-		}
-	}
-	// Создаем массив arr_link в которой и запихнем все названия страничек которые будем искать через регулярнoе выражения
-	foreach ($files as $file) {
-		if (preg_match("/.*.php/", $file)) $arr_link[] = $file;
-	}
-	return $arr_link;
+	fwrite($fp, $a[3]."<loc>".$way."</loc>\n".$a[4]);
+	for ($i = 0; $i < count($links); $i++)
+		if (preg_match("/.*.(php|html)/", $links[$i]))
+			fwrite($fp, $a[3]."<loc>".$way."/".$links[$i]."</loc>\n".$a[4]);
 }
 
-function print_link($link, $fp, $a) 
+function call_check($way, $links, $fp, $a, $go)
 {
-	fwrite($fp, $a[3]."<loc>".$link."</loc>\n".$a[4]);
+	foreach ($links as $catalog)
+		if (preg_match("/^\d(.\d)*$/", $catalog))
+			catalog_reader($way."/".$catalog, $fp, $a, $go);
 }
 
-$files = scandir('../Site');
-$files1 = scandir('../Site/include');
+function catalog_reader($way, $fp, $arr, $go)
+{
+	$files = scandir($way);
+	print_links($way, $files, $fp, $arr);
+	if ($go == 1) call_check($way, $files, $fp, $arr, $go);
+} 
 
-$links = link_search($files, $files1);
-
+$way = '../Site';
 $fp = fopen("../Site/sitemap.xml", "a");
 $arr_str = array(
 	"<?xml version='1.0' encoding='UTF-8'?>\n",
@@ -41,9 +30,9 @@ $arr_str = array(
 	"<url>\n",
 	"</url>\n"
 );
+$go_dir = 1;
 
 fwrite ($fp, $arr_str[0].$arr_str[1]);
-
-for ($i = 0; $i < count($links); $i++) print_link($links[$i], $fp, $arr_str);
-
+catalog_reader($way, $fp, $arr_str, $go_dir);
 fwrite ($fp, $arr_str[2]);
+

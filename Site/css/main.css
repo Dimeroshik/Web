@@ -3,74 +3,44 @@ body, html {
 	height: 100%;
 	font-family: sans-serif;
 	color: #222;
-
 }
 
-.class1 {
-	background-color: blue;
+p {
+	margin-bottom: 5px;
 }
 
-.container {
-	width: 80%;
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
-.navigation,
-.reg {
-	padding-top: 20px;
-}
-
-.navigation a,
-.reg a{
-	margin-right: 30px;
-	text-decoration: none;
-	color: black;
-}
-
-.navigation a:hover{
-	text-decoration: underline;
-}
-
-.reg a:hover{
-	text-decoration: underline;
-	color: orange;
-}
-
-.footer{
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-}
-
-
-.std{
+.nope {
 	position: relative;
-	
-	width: 100%;
 }
 
-.logo {
-	text-decoration: none;
-	color: black;
+.event_card {
+	border: 1px solid #222222;
+	border-radius: 21px;
 }
 
-.logo:hover {
-	text-decoration: none;
-	color: black;
+players_image {
+	width: 20px;
+	height: 20px;
 }
 
-.player {
-	border: 1px solid black;
-	width: 100%;
-	margin-top: 10px;
-}
-
-img .event {
-	margin: 10px;
-}
-
-.form-signs input,
-.form-signs h3,
-.form-signs button{
-	width: 40%;
-	margin: 2px auto;
-}
+.okno {
+        width: 300px;
+        height: 50px;
+        text-align: center;
+        padding: 15px;
+        border: 3px solid #0000cc;
+        border-radius: 10px;
+        color: #0000cc;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+      }
